@@ -1,0 +1,32 @@
+﻿@model OrdenCompra
+@{
+    ViewData["Title"] = "Crear Orden de Compra";
+}
+<h1>FORMULARIO PRUEBA</h1>
+
+<form asp-controller="OrdenCompra" asp-action="Crear">
+    <!--
+        Aquí irán los campos del formulario para crear una Orden de Compra
+        luego tener en cuenta que los Ids de materia y proveedor deben ser seleccionables
+        es decir una pregunta que despliegue los materiales y los proveedores, pero por ahora solo es un formulario de prueba. 
+    -->
+    <div>
+        <label asp-for="IdMateriaPrima" class="form-label">Id Materia:</label>
+        <input asp-for="IdMateriaPrima" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="IdProveedor" class="form-label">Id Proveedor:</label>
+        <input asp-for="IdProveedor"  class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="CantidadUnidades" class="form-label">Cantidad:</label>
+        <input asp-for="CantidadUnidades" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="PrecioUnitario" class="form-label"></label>
+        <input asp-for="PrecioUnitario" class="form-control"/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
