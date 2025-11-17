@@ -1,0 +1,47 @@
+# --- Qt / QMake / CMake ---
+build/
+build-*/
+CMakeFiles/
+CMakeCache.txt
+*.pro.user
+*.pri.user
+*.qbs.user
+*.qmlc
+*.jsc
+*.moc
+*.obj
+*.o
+*.a
+*.lo
+*.la
+*.so
+*.dll
+*.dylib
+*.qrc.depends
+*.qm
+*.rcc
+
+# --- Visual Studio (.vs) ---
+.vs/
+*.vcxproj.user
+*.suo
+*.user
+*.userosscache
+*.sdf
+*.cache
+*.db
+*.opendb
+*.VC.db
+
+# --- Backups / Logs / Misc ---
+*.log
+*.tmp
+*.bak
+
+# --- Python (por si usas scripts MRP) ---
+__pycache__/
+*.pyc
+
+# --- Sistema Operativo ---
+Thumbs.db
+.DS_Store
