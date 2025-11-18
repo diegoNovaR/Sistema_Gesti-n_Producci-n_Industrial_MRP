@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MRPBaseDatosII")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b72b1a1087958c9a3eb58290b464db92a1b4e497")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f5ccc2acc6aacde80f8b97acf2ef4bf422c3562")]
 [assembly: System.Reflection.AssemblyProductAttribute("MRPBaseDatosII")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MRPBaseDatosII")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
