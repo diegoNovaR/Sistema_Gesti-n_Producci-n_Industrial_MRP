@@ -5,7 +5,7 @@ namespace MRPBaseDatosII.Servicios
 {
     public interface IRepositorioMateriaPrima
     {
-
+        Task<MateriaPrima> CrearMateriaPrima(MateriaPrima materiaPrima);
     }
     public class RepositorioMateriaPrima: IRepositorioMateriaPrima
     {
