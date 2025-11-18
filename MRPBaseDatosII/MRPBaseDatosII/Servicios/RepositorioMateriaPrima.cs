@@ -15,7 +15,14 @@ namespace MRPBaseDatosII.Servicios
             connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-
+        public async Task<MateriaPrima> CrearMateriaPrima(MateriaPrima materiaPrima)//AGREGAR NUEVA MATERIA PRIMA 
+        {
+            var connection = new Npgsql.NpgsqlConnection(connectionString);
+            var id = await connection.ExecuteScalarAsync<int>(
+                    "SELECT sp_insertar_materia_prima(@nombre, @descripcion, @marca, tipo)", materiaPrima);
+            materiaPrima.Id = id;
+            return materiaPrima;
+        }
 
     }
 }
