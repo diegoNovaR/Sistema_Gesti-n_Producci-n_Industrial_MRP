@@ -22,10 +22,9 @@ namespace MRPBaseDatosII.Controllers
         [HttpPost]
         public async Task<IActionResult> Crear(OrdenCompra orden)
         {
-            //aqui se puede agregar validaciones si es necesario MAS ADELANTE 
-
             await repositorioOrdenCompra.Crear(orden);
-            return View("Index");//devolver a la vista principal o a otra vista que se configure
+            var ordenes = await repositorioOrdenCompra.ObtenerOrdenCompras();
+            return View("Index", ordenes);
         }
 
 
