@@ -24,5 +24,12 @@ namespace MRPBaseDatosII.Servicios
             return materiaPrima;
         }
 
+        public async Task<IEnumerable<MateriaPrima>> ObtenerListadoMateriaPrima()
+        {
+            var connection = new Npgsql.NpgsqlConnection(connectionString);
+            var materiaPrima = await connection.QueryAsync<MateriaPrima>("SELECT * FROM MateriaPrima");
+            return materiaPrima;
+        }
+
     }
 }
