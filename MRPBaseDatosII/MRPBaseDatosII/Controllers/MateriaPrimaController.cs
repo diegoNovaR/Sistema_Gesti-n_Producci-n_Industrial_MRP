@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MRPBaseDatosII.Models;
 using MRPBaseDatosII.Servicios;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MRPBaseDatosII.Controllers
 {
@@ -30,7 +31,8 @@ namespace MRPBaseDatosII.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var materiaPrima = repositorioMateriaPrima.ObtenerListadoMateriaPrima();
+            return View(materiaPrima);//la vista recibe el listado de materia prima
         }
     }
 }

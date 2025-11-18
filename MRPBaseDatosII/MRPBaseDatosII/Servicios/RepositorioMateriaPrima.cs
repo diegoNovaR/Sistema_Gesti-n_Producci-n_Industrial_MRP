@@ -6,6 +6,7 @@ namespace MRPBaseDatosII.Servicios
     public interface IRepositorioMateriaPrima
     {
         Task<MateriaPrima> CrearMateriaPrima(MateriaPrima materiaPrima);
+        Task<IEnumerable<MateriaPrima>> ObtenerListadoMateriaPrima();
     }
     public class RepositorioMateriaPrima: IRepositorioMateriaPrima
     {
