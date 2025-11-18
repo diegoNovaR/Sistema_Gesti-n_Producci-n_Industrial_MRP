@@ -6,9 +6,11 @@ namespace MRPBaseDatosII.Controllers
 {
     public class OrdenCompraController : Controller
     {
+        private readonly IRepositorioOrdenCompra repositorioOrdenCompra;
         private readonly IRepositorioMateriaPrima repositorioMateriaPrima;
-        public OrdenCompraController(IRepositorioMateriaPrima repositorioMateriaPrima)
+        public OrdenCompraController(IRepositorioOrdenCompra repositorioOrdenCompra, IRepositorioMateriaPrima repositorioMateriaPrima)
         {
+            this.repositorioOrdenCompra = repositorioOrdenCompra;
             this.repositorioMateriaPrima = repositorioMateriaPrima;
         }
 
@@ -22,14 +24,15 @@ namespace MRPBaseDatosII.Controllers
         {
             //aqui se puede agregar validaciones si es necesario MAS ADELANTE 
 
-            await repositorioMateriaPrima.Crear(orden);
+            await repositorioOrdenCompra.Crear(orden);
             return View("Index");//devolver a la vista principal o a otra vista que se configure
         }
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()//Listar las ordenes 
         {
-            return View();
+            var ordenes = await repositorioOrdenCompra.ObtenerOrdenCompras();
+            return View(ordenes);
         }
     }
 }

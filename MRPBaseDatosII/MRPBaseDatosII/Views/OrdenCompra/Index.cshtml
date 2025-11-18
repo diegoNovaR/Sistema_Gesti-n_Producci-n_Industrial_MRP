@@ -1,0 +1,33 @@
+﻿@model IEnumerable<OrdenCompraListadoDTO>
+@{
+    ViewData["Title"] = "Orden de Compras";
+}
+
+<h1>ESTO SOLO ES PRUEBA PARA SABER SI FUNCIONA MI LOGICA</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Materia Prima</th>
+            <th scope="col">Proveedor</th>
+            <th scope="col">Precio U.</th>
+            <th scope="col">Precio T.</th>
+            <th scope="col">Fecha de C.</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+                <th scope="row">@o.Id</th>
+                <td>@o.MateriaPrima</td>
+                <td>@o.Proveedor</td>
+                <td>@o.PrecioUnitario</td>
+                <td>@o.PrecioTotal</td>
+                <td>@o.FechaCompra</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
