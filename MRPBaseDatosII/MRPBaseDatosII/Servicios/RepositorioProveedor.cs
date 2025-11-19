@@ -25,7 +25,7 @@ namespace MRPBaseDatosII.Servicios
             
             proveedor.Id = idProveedor;
             return proveedor;
-        }
+        }//comentario PRUEBA BORRAR LUEGO
 
         public async Task<IEnumerable<Proveedor>> ObtenerNombreId()
         {
