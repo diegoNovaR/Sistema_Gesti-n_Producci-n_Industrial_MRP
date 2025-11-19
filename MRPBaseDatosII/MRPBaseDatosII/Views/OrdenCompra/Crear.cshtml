@@ -1,32 +1,45 @@
-﻿@model OrdenCompra
+﻿@model OrdenCompraViewModel
 @{
     ViewData["Title"] = "Crear Orden de Compra";
 }
 <h1>FORMULARIO PRUEBA</h1>
 
-<form asp-controller="OrdenCompra" asp-action="Crear">
-    <!--
-        Aquí irán los campos del formulario para crear una Orden de Compra
-        luego tener en cuenta que los Ids de materia y proveedor deben ser seleccionables
-        es decir una pregunta que despliegue los materiales y los proveedores, pero por ahora solo es un formulario de prueba. 
-    -->
-    <div>
-        <label asp-for="IdMateriaPrima" class="form-label">Id Materia:</label>
-        <input asp-for="IdMateriaPrima" class="form-control"/>
-    </div>
-    <div>
-        <label asp-for="IdProveedor" class="form-label">Id Proveedor:</label>
-        <input asp-for="IdProveedor"  class="form-control"/>
-    </div>
-    <div>
-        <label asp-for="CantidadUnidades" class="form-label">Cantidad:</label>
-        <input asp-for="CantidadUnidades" class="form-control"/>
-    </div>
-    <div>
-        <label asp-for="PrecioUnitario" class="form-label"></label>
-        <input asp-for="PrecioUnitario" class="form-control"/>
+<form asp-controller="OrdenCompra" asp-action="Crear" method="post">
+    <!-- SELECCIONAR MATERIA PRIMA -->
+    <div class="mb-3">
+        <label asp-for="ordenCompra.IdMateriaPrima" class="form-label">Materia Prima</label>
+        <select asp-for="ordenCompra.IdMateriaPrima"
+                class="form-select"
+                asp-items="@(new SelectList(Model.materiasPrimas, "Id", "Nombre"))">
+            <option value="">Seleccione una materia prima</option>
+        </select>
     </div>
 
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <!-- SELECCIONAR PROVEEDOR -->
+    <div class="mb-3">
+        <label asp-for="ordenCompra.IdProveedor" class="form-label">Proveedor</label>
+        <select asp-for="ordenCompra.IdProveedor"
+                class="form-select"
+                asp-items="@(new SelectList(Model.proveedores, "Id", "NombreEntidad"))">
+            <option value="">Seleccione un proveedor</option>
+        </select>
+    </div>
+
+    <!-- CANTIDAD -->
+    <div class="mb-3">
+        <label asp-for="ordenCompra.CantidadUnidades" class="form-label">Cantidad</label>
+        <input asp-for="ordenCompra.CantidadUnidades" class="form-control" />
+        <span asp-validation-for="ordenCompra.CantidadUnidades" class="text-danger"></span>
+    </div>
+
+    <!-- PRECIO UNITARIO -->
+    <div class="mb-3">
+        <label asp-for="ordenCompra.PrecioUnitario" class="form-label">Precio Unitario</label>
+        <input asp-for="ordenCompra.PrecioUnitario" class="form-control" />
+        <span asp-validation-for="ordenCompra.PrecioUnitario" class="text-danger"></span>
+    </div>
+
+    <!-- BOTÓN -->
+    <button type="submit" class="btn btn-primary">Guardar Orden</button>
 </form>
 
