@@ -7,6 +7,7 @@ namespace MRPBaseDatosII.Servicios
     {
         Task<MateriaPrima> CrearMateriaPrima(MateriaPrima materiaPrima);
         Task<IEnumerable<MateriaPrima>> ObtenerListadoMateriaPrima();
+        Task<IEnumerable<MateriaPrima>> ObtenerNombreId();
     }
     public class RepositorioMateriaPrima: IRepositorioMateriaPrima
     {
@@ -22,6 +23,14 @@ namespace MRPBaseDatosII.Servicios
             var id = await connection.ExecuteScalarAsync<int>(
                     "SELECT sp_insertar_materia_prima(@nombre, @descripcion, @marca, tipo)", materiaPrima);
             materiaPrima.Id = id;
+            return materiaPrima;
+        }
+
+        public async Task<IEnumerable<MateriaPrima>> ObtenerNombreId()
+        {
+            var connection = new Npgsql.NpgsqlConnection(connectionString);
+            var materiaPrima = await connection.QueryAsync<MateriaPrima>(
+                "SELECT id, nombre FROM MateriaPrima ORDER BY id DESC");
             return materiaPrima;
         }
 

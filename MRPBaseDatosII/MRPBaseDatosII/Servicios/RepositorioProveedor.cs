@@ -6,6 +6,7 @@ namespace MRPBaseDatosII.Servicios
     public interface IRepositorioProveedor
     {
         Task<Proveedor> Crear(Proveedor proveedor);
+        Task<IEnumerable<Proveedor>> ObtenerNombreId();
     }
     public class RepositorioProveedor: IRepositorioProveedor
     {
@@ -24,6 +25,13 @@ namespace MRPBaseDatosII.Servicios
             
             proveedor.Id = idProveedor;
             return proveedor;
+        }
+
+        public async Task<IEnumerable<Proveedor>> ObtenerNombreId()
+        {
+            using var connection = new Npgsql.NpgsqlConnection(connectionString);
+            var proveedores = await connection.QueryAsync<Proveedor>("SELECT id, NombreEntidad FROM Proveedor ORDER BY id DESC;");
+            return proveedores;
         }
 
     }
