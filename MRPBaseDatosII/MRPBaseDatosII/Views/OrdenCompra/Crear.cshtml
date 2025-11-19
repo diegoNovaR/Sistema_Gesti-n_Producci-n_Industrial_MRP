@@ -4,42 +4,45 @@
 }
 <h1>FORMULARIO PRUEBA</h1>
 
+
 <form asp-controller="OrdenCompra" asp-action="Crear" method="post">
-    <!-- SELECCIONAR MATERIA PRIMA -->
+
+    <!-- Materia Prima -->
     <div class="mb-3">
-        <label asp-for="ordenCompra.IdMateriaPrima" class="form-label">Materia Prima</label>
-        <select asp-for="ordenCompra.IdMateriaPrima"
-                class="form-select"
-                asp-items="@(new SelectList(Model.materiasPrimas, "Id", "Nombre"))">
-            <option value="">Seleccione una materia prima</option>
+        <label class="form-label">Materia Prima</label>
+        <select asp-for="ordenCompra.IdMateriaPrima" class="form-select">
+            <option selected disabled>Seleccione una Materia Prima</option>
+            @foreach (var item in Model.materiasPrimas)
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
         </select>
     </div>
 
-    <!-- SELECCIONAR PROVEEDOR -->
+    <!-- Proveedor -->
     <div class="mb-3">
-        <label asp-for="ordenCompra.IdProveedor" class="form-label">Proveedor</label>
-        <select asp-for="ordenCompra.IdProveedor"
-                class="form-select"
-                asp-items="@(new SelectList(Model.proveedores, "Id", "NombreEntidad"))">
-            <option value="">Seleccione un proveedor</option>
+        <label class="form-label">Proveedor</label>
+        <select asp-for="ordenCompra.IdProveedor" class="form-select">
+            <option selected disabled>Seleccione un Proveedor</option>
+            @foreach (var item in Model.proveedores)
+            {
+                <option value="@item.Id">@item.NombreEntidad</option>
+            }
         </select>
     </div>
 
-    <!-- CANTIDAD -->
+    <!-- Cantidad -->
     <div class="mb-3">
-        <label asp-for="ordenCompra.CantidadUnidades" class="form-label">Cantidad</label>
+        <label asp-for="ordenCompra.CantidadUnidades" class="form-label"></label>
         <input asp-for="ordenCompra.CantidadUnidades" class="form-control" />
-        <span asp-validation-for="ordenCompra.CantidadUnidades" class="text-danger"></span>
     </div>
 
-    <!-- PRECIO UNITARIO -->
+    <!-- Precio Unitario -->
     <div class="mb-3">
-        <label asp-for="ordenCompra.PrecioUnitario" class="form-label">Precio Unitario</label>
+        <label asp-for="ordenCompra.PrecioUnitario" class="form-label"></label>
         <input asp-for="ordenCompra.PrecioUnitario" class="form-control" />
-        <span asp-validation-for="ordenCompra.PrecioUnitario" class="text-danger"></span>
     </div>
 
-    <!-- BOTÓN -->
-    <button type="submit" class="btn btn-primary">Guardar Orden</button>
+    <button type="submit" class="btn btn-primary">Registrar Orden</button>
 </form>
 
