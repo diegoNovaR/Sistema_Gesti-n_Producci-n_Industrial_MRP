@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IRepositorioMateriaPrima, RepositorioMateriaPrima>();
 builder.Services.AddTransient<IRepositorioOrdenCompra, RepositorioOrdenCompra>();
+builder.Services.AddTransient<IRepositorioProveedor, RepositorioProveedor>();
 
 var app = builder.Build();
 
