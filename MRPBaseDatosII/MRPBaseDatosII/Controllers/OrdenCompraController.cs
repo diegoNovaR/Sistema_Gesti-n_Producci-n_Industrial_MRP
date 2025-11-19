@@ -30,8 +30,8 @@ namespace MRPBaseDatosII.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Crear(OrdenCompra orden)
-        {
+        public async Task<IActionResult> Crear(OrdenCompra orden)//cambiar modelo a OrdenCompraViewModel si hay error
+        {//luego cambiar de orden a modelo.ordenCompra
             await repositorioOrdenCompra.Crear(orden);
             var ordenes = await repositorioOrdenCompra.ObtenerOrdenCompras();
             return View("Index", ordenes);
