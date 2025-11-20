@@ -16,7 +16,8 @@ namespace MRPBaseDatosII.Controllers
 
         public async Task<IActionResult> Crear()//accion para mostrar la vista de crear materia prima(formulario)
         {
-            return View();//vista sin objeto
+            var modelo = new MateriaPrima();//creamos un objeto materia prima vacio
+            return View(modelo);//vista sin objeto
         }
 
 
