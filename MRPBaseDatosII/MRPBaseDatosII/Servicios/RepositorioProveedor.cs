@@ -20,7 +20,8 @@ namespace MRPBaseDatosII.Servicios
         {
             using var connection = new Npgsql.NpgsqlConnection(connectionString);
             var idProveedor = await connection.ExecuteScalarAsync<int>(
-                "SELECT sp_insertar_proveedor(@nombreEntidad, @direccion, @identificacion_)",
+                "INSERT INTO Proveedor (NombreEntidad, Direccion, Identificacion) " +
+                "VALUES ('@NombreEntidad', '@Direccion', '@Identificacion')",
                 new {proveedor.NombreEntidad, proveedor.Direccion, proveedor.Identificacion});
             
             proveedor.Id = idProveedor;
