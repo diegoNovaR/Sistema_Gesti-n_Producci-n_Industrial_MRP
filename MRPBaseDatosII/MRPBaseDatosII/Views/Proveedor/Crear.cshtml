@@ -1,5 +1,29 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Proveedor
+
 @{
+    ViewData["Title"] = "Crear Proveedor";
 }
+
+<h1>FORMULARIO PRUEBA para proveedor</h1>
+
+<form asp-controller="Proveedor" asp-action="Crear" method="post">
+    <div class="mb-3">
+        <label asp-for="NombreEntidad" class="form-label"></label>
+        <input asp-for="NombreEntidad" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Direccion" class="form-label"></label>
+        <input asp-for="Direccion" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Identificacion" class="form-label"></label>
+        <input asp-for="Identificacion" class="form-control" />
+    </div>
+
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Guardar Materia Prima</button>
+        <a asp-controller="Proveedor" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+
+</form>
+

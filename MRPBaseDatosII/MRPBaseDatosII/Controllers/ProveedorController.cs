@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MRPBaseDatosII.Models;
 using MRPBaseDatosII.Servicios;
+using System.Threading.Tasks;
 
 namespace MRPBaseDatosII.Controllers
 {
@@ -14,20 +15,23 @@ namespace MRPBaseDatosII.Controllers
 
         public IActionResult Crear()
         {
-            return View();
+            var modelo = new Proveedor();
+            return View(modelo);
         }
 
         [HttpPost]
         public async Task<IActionResult> Crear(Proveedor proveedor)
         {
             var nuevoProveedor = await repositorioProveedor.Crear(proveedor);
-            return RedirectToAction("Index");
+            var listaProveedor = await repositorioProveedor.ObtenerProveedores();
+            return RedirectToAction("Index", listaProveedor);
         }
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var modelo = await repositorioProveedor.ObtenerProveedores();
+            return View(modelo);
         }
     }
 }

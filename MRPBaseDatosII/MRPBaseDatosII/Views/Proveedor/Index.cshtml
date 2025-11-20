@@ -1,5 +1,31 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Proveedor>
 @{
+    ViewData["Title"] = "Proveedores";
 }
+
+<h1>ESTO SOLO ES PRUEBA PARA SABER SI FUNCIONA MI LOGICA</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre Entidad</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Identificación</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+
+                <td>@o.Id</td>
+                <td>@o.NombreEntidad</td>
+                <td>@o.Direccion</td>
+                <td>@o.Identificacion</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

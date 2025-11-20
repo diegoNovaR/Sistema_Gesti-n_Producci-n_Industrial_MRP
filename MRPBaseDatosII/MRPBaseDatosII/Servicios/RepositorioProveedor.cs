@@ -7,6 +7,7 @@ namespace MRPBaseDatosII.Servicios
     {
         Task<Proveedor> Crear(Proveedor proveedor);
         Task<IEnumerable<Proveedor>> ObtenerNombreId();
+        Task<IEnumerable<Proveedor>> ObtenerProveedores();
     }
     public class RepositorioProveedor: IRepositorioProveedor
     {
@@ -21,7 +22,7 @@ namespace MRPBaseDatosII.Servicios
             using var connection = new Npgsql.NpgsqlConnection(connectionString);
             var idProveedor = await connection.ExecuteScalarAsync<int>(
                 "INSERT INTO Proveedor (NombreEntidad, Direccion, Identificacion) " +
-                "VALUES ('@NombreEntidad', '@Direccion', '@Identificacion')",
+                "VALUES (@NombreEntidad, @Direccion, @Identificacion)",
                 new {proveedor.NombreEntidad, proveedor.Direccion, proveedor.Identificacion});
             
             proveedor.Id = idProveedor;
@@ -32,6 +33,13 @@ namespace MRPBaseDatosII.Servicios
         {
             using var connection = new Npgsql.NpgsqlConnection(connectionString);
             var proveedores = await connection.QueryAsync<Proveedor>("SELECT id, NombreEntidad FROM Proveedor ORDER BY id DESC;");
+            return proveedores;
+        }
+
+        public async Task<IEnumerable<Proveedor>> ObtenerProveedores()
+        {
+            using var connection = new Npgsql.NpgsqlConnection(connectionString);
+            var proveedores = await connection.QueryAsync<Proveedor>("SELECT * FROM Proveedor;");
             return proveedores;
         }
 
