@@ -41,5 +41,18 @@ namespace MRPBaseDatosII.Servicios
             return materiaPrima;
         }
 
+        public async Task<IEnumerable<MateriaPrimaVM>> ObtenerStockCantidadTipo()
+        {
+            var connection = new Npgsql.NpgsqlConnection(connectionString);
+            var materiaPrimaVM = await connection.QueryAsync<MateriaPrimaVM>(
+                "SELECT mp.id, mp.nombre, i.stock, mp.tipo " +
+                "FROM materiaPrima AS mp " +
+                "JOIN inventario AS i ON mp.id = i.id_materia_prima " +
+                "WHERE mp.id = i.id_materia_prima AND i.tipo = 'Materia Prima'");
+
+            return materiaPrimaVM;
+
+        }
+
     }
 }
