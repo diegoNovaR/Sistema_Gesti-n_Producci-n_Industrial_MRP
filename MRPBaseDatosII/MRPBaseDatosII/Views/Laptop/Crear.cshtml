@@ -7,7 +7,7 @@
 
 <h1>Crear laptop</h1>
 
-<form asp-controller="Laptop" asp-action="Crer" method="post">
+<form asp-controller="Laptop" asp-action="Crear" method="post">
 
     <div class="mb-3">
         <label asp-for="Laptop.Nombre" class="form-label"></label>
@@ -19,7 +19,7 @@
         <select asp-for="Laptop.Tipo" class="form-select" required>
             <option selected disabled>Seleccione un procesador</option>
             <option value="gamer">gamer</option>
-            <option value="bámer">básica</option>
+            <option value="básica">básica</option>
         </select>
     </div>
 
@@ -116,6 +116,8 @@
         </select>
 
     </div>
+    <button type="submit" class="btn btn-primary">Crear Laptop</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
 
 </form>
 
