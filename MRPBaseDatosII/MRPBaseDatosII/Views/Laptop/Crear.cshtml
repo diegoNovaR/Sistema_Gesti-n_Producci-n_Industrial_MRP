@@ -12,7 +12,7 @@
     <div class="mb-3">
 
             <label class="form-label">Procesador</label>
-            <select asp-for="MateriasPrimas" class="form-select" required>
+            <select asp-for="ProcesadorId" class="form-select" required>
                 <option selected disabled>Seleccione un procesador</option>
                 @foreach (var item in Model.MateriasPrimas.Where(x => x.Tipo == "procesador"))
                 {
@@ -24,9 +24,34 @@
     <div class="mb-3">
 
         <label class="form-label">Ram</label>
-        <select asp-for="MateriasPrimas" class="form-select">
-            <option selected disabled>Seleccione un procesador</option>
+        <select asp-for="RamId" class="form-select">
+            <option selected disabled>Seleccione una memoria ram</option>
             @foreach (var item in Model.MateriasPrimas.Where(x => x.Tipo == "ram"))
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </select>
+
+    </div>
+    <div class="mb-3">
+
+        <label class="form-label">Tarjeta Video</label>
+        <select asp-for="TarjetaVideoId" class="form-select">
+            <option selected disabled>Seleccione una tarjeta de video</option>
+            @foreach (var item in Model.MateriasPrimas.Where(x => x.Tipo == "tarjeta video"))
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Pantalla</label>
+        <select asp-for="PantallaId" class="form-select">
+            <option selected disabled>Seleccione una pantalla</option>
+            @foreach (var item in Model.MateriasPrimas.Where(x => x.Tipo == "pantalla"))
             {
                 <option value="@item.Id">@item.Nombre</option>
             }
