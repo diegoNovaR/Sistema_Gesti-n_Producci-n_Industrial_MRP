@@ -10,6 +10,25 @@
 <form asp-controller="Laptop" asp-action="Crer" method="post">
 
     <div class="mb-3">
+        <label asp-for="Laptop.Nombre" class="form-label"></label>
+        <input asp-for="Laptop.Nombre" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Laptop.Tipo" class="form-label"></label>
+        <select asp-for="Laptop.Tipo" class="form-select" required>
+            <option selected disabled>Seleccione un procesador</option>
+            <option value="gamer">gamer</option>
+            <option value="bámer">básica</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Laptop.PrecioVenta" class="form-label"></label>
+        <input asp-for="Laptop.PrecioVenta" class="form-control" />
+    </div>
+
+    <div class="mb-3">
 
             <label class="form-label">Procesador</label>
             <select asp-for="ProcesadorId" class="form-select" required>
@@ -58,5 +77,45 @@
         </select>
 
     </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Placa Madre</label>
+        <select asp-for="PlacaMadreId" class="form-select">
+            <option selected disabled>Seleccione una placa madre</option>
+            @foreach (var item in Model.MateriasPrimas.Where(x => x.Tipo == "placa madre"))
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">chasis</label>
+        <select asp-for="ChasisId" class="form-select">
+            <option selected disabled>Seleccione un chasis</option>
+            @foreach (var item in Model.MateriasPrimas.Where(x => x.Tipo == "chasis"))
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Memoria de almacenamiento</label>
+        <select asp-for="AlmacenamientoId" class="form-select">
+            <option selected disabled>Seleccione una memoria de almacenamiento</option>
+            @foreach (var item in Model.MateriasPrimas.Where(x => x.Tipo == "almacenamiento"))
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </select>
+
+    </div>
+
 </form>
 
