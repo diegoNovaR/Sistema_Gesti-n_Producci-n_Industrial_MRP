@@ -1,5 +1,37 @@
 ﻿
-
+@model LaptopConMateriaPrimaViewModel
 
 @{
+    ViewData["Title"] = "Crear Laptop";
 }
+
+<h1>Crear laptop</h1>
+
+<form asp-controller="Laptop" asp-action="Crer" method="post">
+
+    <div class="mb-3">
+
+            <label class="form-label">Procesador</label>
+            <select asp-for="MateriasPrimas" class="form-select" required>
+                <option selected disabled>Seleccione un procesador</option>
+                @foreach (var item in Model.MateriasPrimas.Where(x => x.Tipo == "procesador"))
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+
+    </div>
+    <div class="mb-3">
+
+        <label class="form-label">Ram</label>
+        <select asp-for="MateriasPrimas" class="form-select">
+            <option selected disabled>Seleccione un procesador</option>
+            @foreach (var item in Model.MateriasPrimas.Where(x => x.Tipo == "ram"))
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </select>
+
+    </div>
+</form>
+
