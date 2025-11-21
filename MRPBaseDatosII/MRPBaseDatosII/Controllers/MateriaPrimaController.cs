@@ -24,7 +24,7 @@ namespace MRPBaseDatosII.Controllers
         [HttpPost]
         public async Task<IActionResult> Crear(MateriaPrima materiaPrima)//recibimos el objeto materia prima desde la vista
         {
-            var materia = repositorioMateriaPrima.CrearMateriaPrima(materiaPrima);//guardamos el objeto materia prima pasado como parametro
+            var materia = await repositorioMateriaPrima.CrearMateriaPrima(materiaPrima);//guardamos el objeto materia prima pasado como parametro
             
             var materiaListado = await repositorioMateriaPrima.ObtenerListadoMateriaPrima();
             return View("Index",materiaListado);
