@@ -12,6 +12,18 @@ namespace MRPBaseDatosII.Controllers
             this.repositorioMateriaPrima = repositorioMateriaPrima;
             this.repositorioLaptop = repositorioLaptop;
         }
+        
+
+        public async Task<IActionResult> Crear()
+        {
+            var materiasPrimas = await repositorioMateriaPrima.ObtenerStockCantidadTipo();
+            var laptopConMateriaPrimaViewModel = new Models.LaptopConMateriaPrimaViewModel
+            {
+                MateriasPrimas = materiasPrimas.ToList()
+            };
+            return View(laptopConMateriaPrimaViewModel);
+        }
+
         public IActionResult Index()
         {
             return View();

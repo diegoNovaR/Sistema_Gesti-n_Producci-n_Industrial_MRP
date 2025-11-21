@@ -8,6 +8,7 @@ namespace MRPBaseDatosII.Servicios
         Task<MateriaPrima> CrearMateriaPrima(MateriaPrima materiaPrima);
         Task<IEnumerable<MateriaPrima>> ObtenerListadoMateriaPrima();
         Task<IEnumerable<MateriaPrima>> ObtenerNombreId();
+        Task<IEnumerable<MateriaPrimaVM>> ObtenerStockCantidadTipo();
     }
     public class RepositorioMateriaPrima: IRepositorioMateriaPrima
     {
