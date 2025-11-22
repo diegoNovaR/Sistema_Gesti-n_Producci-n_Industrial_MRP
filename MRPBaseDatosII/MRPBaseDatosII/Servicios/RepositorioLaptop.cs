@@ -7,6 +7,7 @@ namespace MRPBaseDatosII.Servicios
     public interface IRepositorioLaptop
     {
         Task<bool> Crear(Laptop laptop, string jsonDetalles);
+        Task<IEnumerable<LaptopDTO>> ObtenerLaptops();
     }
     public class RepositorioLaptop: IRepositorioLaptop
     {
@@ -39,6 +40,13 @@ namespace MRPBaseDatosII.Servicios
                 Console.WriteLine("ERROR BD: " + ex.Message);
                 throw; // controlador rexibe el error
             }
+        }
+
+        public async Task<IEnumerable<LaptopDTO>> ObtenerLaptops()
+        {
+            using var connection = new NpgsqlConnection(connectionString);
+            var laptops = await connection.QueryAsync<LaptopDTO>("SELECT * FROM Laptop ORDER BY id DESC");
+            return laptops;
         }
 
     }

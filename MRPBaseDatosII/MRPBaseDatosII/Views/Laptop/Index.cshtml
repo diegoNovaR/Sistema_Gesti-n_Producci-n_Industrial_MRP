@@ -1,5 +1,39 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<LaptopDTO>
+
 @{
+    ViewData["Title"] = "Lista de Laptops";
 }
+
+
+<h1>Esta es la lista de laptops</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Precio de venta</th>
+            <th scope="col">Costo produccion</th>
+            <th scope="col">Fecha Creacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+
+                <td>@o.Id</td>
+                <td>@o.Nombre</td>
+                <td>@o.Tipo</td>
+                <td>@o.PrecioVenta</td>
+                <td>@o.CostoProduccion</td>
+                <td>@o.FechaCreacion.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
