@@ -28,10 +28,10 @@ namespace MRPBaseDatosII.Servicios
             var query = await connection.ExecuteScalarAsync<bool>("SELECT sp_crear_laptop_con_receta(@p_nombre, @p_tipo, @p_precio_venta, @p_detalles::json)", 
                     new
                     {
-                        nombre = laptop.Nombre,
-                        tipo = laptop.Tipo,
-                        precio = laptop.PrecioVenta,
-                        detalles = jsonDetalles
+                        p_nombre = laptop.Nombre,
+                        p_tipo = laptop.Tipo,
+                        p_precio_venta = laptop.PrecioVenta,
+                        p_detalles = jsonDetalles
                     });
             return query;
         }
