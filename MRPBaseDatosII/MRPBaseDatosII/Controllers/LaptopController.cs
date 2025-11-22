@@ -28,35 +28,57 @@ namespace MRPBaseDatosII.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Crear(LaptopConMateriaPrimaViewModel laptopConMateriaPrima)
+        public async Task<IActionResult> Crear(LaptopConMateriaPrimaViewModel model)
         {
+            // Validar modelo
             if (!ModelState.IsValid)
             {
-                var materiasPrimas = await repositorioMateriaPrima.ObtenerStockCantidadTipo();
-                laptopConMateriaPrima.MateriasPrimas = materiasPrimas.ToList();
-                return View(laptopConMateriaPrima);
+                model.MateriasPrimas = (await repositorioMateriaPrima.ObtenerStockCantidadTipo()).ToList();
+                return View(model);
             }
 
-            var detallesReceta = new[]
+            try
             {
-                new{id_materia = laptopConMateriaPrima.ProcesadorId, cantidad = 1},
-                new {id_materia = laptopConMateriaPrima.RamId, cantidad = 1},
-                new {id_materia = laptopConMateriaPrima.AlmacenamientoId, cantidad = 1},
-                new {id_materia = laptopConMateriaPrima.PlacaMadreId, cantidad = 1},
-                new {id_materia = laptopConMateriaPrima.PantallaId, cantidad = 1},
-                new {id_materia = laptopConMateriaPrima.TarjetaVideoId, cantidad = 1},
-                new {id_materia = laptopConMateriaPrima.ChasisId, cantidad = 1}
-            };
 
-            var jsonDetalles = JsonConvert.SerializeObject(detallesReceta);
-            var result = await repositorioLaptop.Crear(laptopConMateriaPrima.Laptop, jsonDetalles);
-            if (!result)
-            {
-                TempData["Error"] = "Hubo un error al crear la laptop";
-                return RedirectToAction("Crear");
+                var detallesRecetaList = new List<dynamic>();
+
+                // Componentes que siempre son necesarios:
+                detallesRecetaList.Add(new { id_materia = model.ProcesadorId, cantidad = 1 });
+                detallesRecetaList.Add(new { id_materia = model.RamId, cantidad = 1 });
+                detallesRecetaList.Add(new { id_materia = model.AlmacenamientoId, cantidad = 1 });
+                detallesRecetaList.Add(new { id_materia = model.PlacaMadreId, cantidad = 1 });
+                detallesRecetaList.Add(new { id_materia = model.PantallaId, cantidad = 1 });
+                detallesRecetaList.Add(new { id_materia = model.ChasisId, cantidad = 1 });
+
+                var jsonDetalles = JsonConvert.SerializeObject(detallesRecetaList);
+
+                if (model.TarjetaVideoId > 0)
+                {
+                    detallesRecetaList.Add(new { id_materia = model.TarjetaVideoId, cantidad = 1 });
+                }
+
+                // Llamada al repositorio
+                var result = await repositorioLaptop.Crear(model.Laptop, jsonDetalles);
+
+                if (!result)
+                {
+                    TempData["Error"] = "La función devolvió FALSE. No se pudo crear la laptop.";
+                    return RedirectToAction("Crear");
+                }
+
+                TempData["Success"] = "Laptop creada exitosamente.";
+                return RedirectToAction("Index");
             }
+            catch (Exception ex)
+            {
+                
+                TempData["Error"] = "ERROR BD: " + ex.Message;
 
-            return RedirectToAction("Index");
+                // Recargar lista de materias primas para reconstruir formulario
+                model.MateriasPrimas = (await repositorioMateriaPrima.ObtenerStockCantidadTipo()).ToList();
+
+                return View(model);
+            }
         }
 
 

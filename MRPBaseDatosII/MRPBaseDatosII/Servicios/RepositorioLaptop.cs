@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using MRPBaseDatosII.Models;
+using Npgsql;
 
 namespace MRPBaseDatosII.Servicios
 {
@@ -17,15 +18,12 @@ namespace MRPBaseDatosII.Servicios
 
         public async Task<bool> Crear(Laptop laptop, string jsonDetalles)
         {
-            var connection = new Npgsql.NpgsqlConnection(connectionString);
-            //var parametros = new
-            //{
-            //    p_nombre = laptop.Nombre,
-            //    p_tipo = laptop.Tipo,
-            //    p_precio_venta = laptop.PrecioVenta,
-            //    p_detalles = jsonDetalles
-            //};
-            var query = await connection.ExecuteScalarAsync<bool>("SELECT sp_crear_laptop_con_receta(@p_nombre, @p_tipo, @p_precio_venta, @p_detalles::json)", 
+            try
+            {
+                using var connection = new NpgsqlConnection(connectionString);
+
+                var result = await connection.ExecuteScalarAsync<bool>(
+                    "SELECT sp_crear_laptop_con_receta(@p_nombre, @p_tipo, @p_precio_venta, @p_detalles::json)",
                     new
                     {
                         p_nombre = laptop.Nombre,
@@ -33,7 +31,14 @@ namespace MRPBaseDatosII.Servicios
                         p_precio_venta = laptop.PrecioVenta,
                         p_detalles = jsonDetalles
                     });
-            return query;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR BD: " + ex.Message);
+                throw; // controlador rexibe el error
+            }
         }
 
     }
