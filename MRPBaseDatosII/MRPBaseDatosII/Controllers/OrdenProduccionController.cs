@@ -12,7 +12,7 @@ namespace MRPBaseDatosII.Controllers
         }
         public async Task<IActionResult> Crear()
         {
-            var ordenesProduccion = await repositorioOrdenProduccion.Crear();
+            var ordenesProduccion = await repositorioOrdenProduccion.ObtenerOrdenProduccion();
             return View(ordenesProduccion);
         }
         public IActionResult Index()

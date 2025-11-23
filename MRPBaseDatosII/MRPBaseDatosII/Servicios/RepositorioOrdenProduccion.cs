@@ -5,7 +5,7 @@ namespace MRPBaseDatosII.Servicios
 {
     public interface IRepositorioOrdenProduccion
     {
-        Task<IEnumerable<OrdenProduccionViewModel>> Crear();
+        Task<IEnumerable<OrdenProduccionViewModel>> ObtenerOrdenProduccion();
     }
     public class RepositorioOrdenProduccion: IRepositorioOrdenProduccion
     {
@@ -15,7 +15,7 @@ namespace MRPBaseDatosII.Servicios
             connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-        public async Task<IEnumerable<OrdenProduccionViewModel>> Crear()
+        public async Task<IEnumerable<OrdenProduccionViewModel>> ObtenerOrdenProduccion()
         {
             using var connection = new Npgsql.NpgsqlConnection(connectionString);
             var ordenesProduccion = await connection.QueryAsync<OrdenProduccionViewModel>("SELECT r.id, l.nombre as nombreLaptop, r.costototaldereceta " +
