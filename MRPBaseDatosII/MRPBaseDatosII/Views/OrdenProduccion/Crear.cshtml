@@ -1,0 +1,29 @@
+﻿
+@model IEnumerable<OrdenProduccionViewModel>
+
+@{
+    ViewBag.Title = "Crear Orden de Producción";
+}
+
+<h1>FORMULARIO CREAR Orden de produccion</h1>
+
+<form asp-controller="OrdenProduccion" asp-action="crear">
+    <div class="mb-3">
+        <label class="form-label">Crear Laptop</label>
+        <select class="form-select">
+            <option selected disabled>Seleccione una Laptop</option>
+            @foreach (var item in Model)
+            {
+                <option value="@item.Id">@item.nombreLaptop</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Cantidad</label>
+        <input type="number" class="form-control" name="cantidad" />
+    </div>
+    <button type="submit" class="btn btn-primary">Crear Orden de Producción</button>
+</form>
+
+
+
