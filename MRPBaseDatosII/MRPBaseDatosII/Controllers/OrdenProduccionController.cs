@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MRPBaseDatosII.Models;
 using MRPBaseDatosII.Servicios;
 
 namespace MRPBaseDatosII.Controllers
@@ -12,9 +13,24 @@ namespace MRPBaseDatosII.Controllers
         }
         public async Task<IActionResult> Crear()
         {
-            var ordenesProduccion = await repositorioOrdenProduccion.ObtenerOrdenProduccion();
-            return View(ordenesProduccion);
+            var laptops = await repositorioOrdenProduccion.ObtenerOrdenProduccion();
+
+            var modelo = new CrearOrdenProduccionViewModel
+            {
+                Laptops = laptops.ToList()
+            };
+
+            return View(modelo);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Crear(CrearOrdenProduccionViewModel ordenProduccionVM)
+        {
+            var ordenProduccionCreada = await repositorioOrdenProduccion.Crear(ordenProduccionVM);
+            return RedirectToAction("Index",ordenProduccionCreada);
+        }
+
+
         public IActionResult Index()
         {
             return View();
