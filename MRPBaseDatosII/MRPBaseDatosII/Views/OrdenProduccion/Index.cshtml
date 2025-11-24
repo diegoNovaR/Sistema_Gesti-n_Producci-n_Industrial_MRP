@@ -1,8 +1,35 @@
-﻿
+﻿@model IEnumerable<IndexProduccionDTO>
+
 @{
+    ViewBag.Title = "Inventario de Orden de producción";
 }
 
 <h1>Inventario de Orden de producción</h1>
 
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Costo Produccion</th>
+            <th scope="col">Codigo Lote</th>
+            <th scope="col">Fecha Creacion</th>
+            <th scope="col">Cantidad Producto Fabricado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+                <td>@o.nombre</td>
+                <td>@o.costo_produccion</td>
+                <td>@o.codigo_lote</td>
+                <td>@o.fecha_creacion.ToString("dd/MM/yyyy")</td>
+                <td>@o.cantidad_producto_fabricado</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 

@@ -8,6 +8,7 @@ namespace MRPBaseDatosII.Servicios
     {
         Task<CrearOrdenProduccionDTO> Crear(CrearOrdenProduccionViewModel ordenProduccion);
         Task<IEnumerable<OrdenProduccionViewModel>> ObtenerOrdenProduccion();
+        Task<IEnumerable<IndexProduccionDTO>> ObtenerListaOrdenProduccion();
     }
     public class RepositorioOrdenProduccion: IRepositorioOrdenProduccion
     {
@@ -39,7 +40,16 @@ namespace MRPBaseDatosII.Servicios
             return ordenProduccionCreada;
         }
 
-        //public async Task<IEnumerable<CrearOrdenProduccionDTO>>
+        public async Task<IEnumerable<IndexProduccionDTO>> ObtenerListaOrdenProduccion()
+        {
+            using var connection = new Npgsql.NpgsqlConnection(connectionString);
+            var ordenesProduccion = await connection.QueryAsync<IndexProduccionDTO>(
+                "SELECT op.id, lap.nombre, op.costo_produccion, l.codigo_lote, l.fecha_creacion, l.cantidad_producto_fabricado " +
+                "FROM orden_produccion AS op\r\nJOIN lote AS l ON op.id = l.id_orden_produccion " +
+                "JOIN receta AS r ON op.id_receta = r.id\r\nJOIN Laptop AS lap ON r.idlaptop = lap.id " +
+                "ORDER BY op.id DESC");
+            return ordenesProduccion;
+        }
 
     }
 }

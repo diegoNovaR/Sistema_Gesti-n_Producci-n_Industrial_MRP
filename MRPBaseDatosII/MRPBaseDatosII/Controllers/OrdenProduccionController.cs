@@ -27,13 +27,15 @@ namespace MRPBaseDatosII.Controllers
         public async Task<IActionResult> Crear(CrearOrdenProduccionViewModel ordenProduccionVM)
         {
             var ordenProduccionCreada = await repositorioOrdenProduccion.Crear(ordenProduccionVM);
-            return RedirectToAction("Index",ordenProduccionCreada);
+            var obtenerListado = await repositorioOrdenProduccion.ObtenerListaOrdenProduccion();
+            return RedirectToAction("Index", obtenerListado);
         }
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(IndexProduccionDTO ordenesProduccioon)
         {
-            return View();
+            var ordenesProduccion = await repositorioOrdenProduccion.ObtenerListaOrdenProduccion();
+            return View(ordenesProduccion);
         }
     }
 }
