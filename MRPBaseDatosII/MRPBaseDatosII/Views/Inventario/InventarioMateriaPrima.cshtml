@@ -1,0 +1,39 @@
+﻿@model IEnumerable<InventarioMateriaPrimaDTO>
+
+@{
+    ViewData["Title"] = "Inventario de Materia Prima";
+}
+
+<h1>Inventario de Materia Prima</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">nombre</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Precio Costo Unitario</th>
+            <th scope="col">Fecha de Compra</th>
+            <th scope="col">stock</th>
+            <th scope="col">Stock Mínimo</th>
+            <th scope="col">ubicacion Seccion</th>
+            <th scope="col">Ubicación Stand</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+
+                <td>@o.nombre</td>
+                <td>@o.tipo</td>
+                <td>@o.precioUnitario</td>
+                <td>@o.fechaCompra</td>
+                <td>@o.stock</td>
+                <td>@o.stock_minimo</td>
+                <td>@o.ubicacion_seccion</td>
+                <td>@o.ubicacion_stand</td>
+            </tr>
+        }
+    </tbody>
+</table>

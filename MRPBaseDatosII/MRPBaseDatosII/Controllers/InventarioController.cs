@@ -18,6 +18,13 @@ namespace MRPBaseDatosII.Controllers
             return View(laptopInventario);
         }
 
+
+        public async Task<IActionResult> InventarioMateriaPrima()
+        {
+            var materiaPrima = await repositorioInventario.MateriaPrimaConInventario();
+            return View(materiaPrima);
+        }
+
         public IActionResult Index()
         {
             return View();
