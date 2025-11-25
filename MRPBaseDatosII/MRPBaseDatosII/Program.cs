@@ -10,6 +10,7 @@ builder.Services.AddTransient<IRepositorioOrdenCompra, RepositorioOrdenCompra>()
 builder.Services.AddTransient<IRepositorioProveedor, RepositorioProveedor>();
 builder.Services.AddTransient<IRepositorioLaptop, RepositorioLaptop>();
 builder.Services.AddTransient<IRepositorioOrdenProduccion, RepositorioOrdenProduccion>();
+builder.Services.AddTransient<IRepositorioInventario, RepositorioInventario>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

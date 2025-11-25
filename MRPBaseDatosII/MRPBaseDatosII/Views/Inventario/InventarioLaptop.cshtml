@@ -2,5 +2,41 @@
 @model IEnumerable<InventarioLaptopDTO>
 
 @{
-
+    ViewData["Title"] = "Inventario de Laptops";
 }
+
+<h1>Inventario de laptop</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">nombre</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Precio Venta</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Stock Mínimo</th>
+            <th scope="col">Ubicación Sección</th>
+            <th scope="col">Ubicación Stand</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+
+                <td>@o.nombre</td>
+                <td>@o.tipo</td>
+                <td>@o.precioVenta</td>
+                <td>@o.stock</td>
+                <td>@o.stock_minimo</td>
+                <td>@o.ubicacion_seccion</td>
+                <td>@o.ubicacion_stand</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
