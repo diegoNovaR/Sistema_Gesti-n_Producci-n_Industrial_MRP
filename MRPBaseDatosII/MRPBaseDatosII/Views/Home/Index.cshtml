@@ -8,9 +8,29 @@
 </div>
 
 <!--PRUEBA BORRAR LUEGO-->
-<form asp-action="Prueba" method="post">
-    <button class="btn btn-primary">Probar conexión</button>
-</form>
+<a asp-controller="MateriaPrima" asp-action="Crear" class="btn btn-primary mx-2 mb-3">Crear Materia</a>
+
+<a asp-controller="MateriaPrima" asp-action="Index" class="btn btn-primary mx-2 mb-3">Lista de Materia P.</a>
+
+<a asp-controller="Proveedor" asp-action="Crear" class="btn btn-primary mx-2 mb-3">Crear Proveedor</a>
+
+<a asp-controller="Proveedor" asp-action="Index" class="btn btn-primary mx-2 mb-3">Lista de Proveedores</a>
+
+<a asp-controller="OrdenProduccion" asp-action="Crear" class="btn btn-primary mx-2 mb-3">Crear Orden Producción</a>
+
+<a asp-controller="OrdenProduccion" asp-action="Index" class="btn btn-primary mx-2 mb-3">Lista de Orden Producción</a>
+
+<a asp-controller="OrdenCompra" asp-action="Crear" class="btn btn-primary mx-2 mb-3">Comprar Materia Prima</a>
+
+<a asp-controller="OrdenCompra" asp-action="Index" class="btn btn-primary mx-2 mb-3">Lista Orden Compra Materia P.</a>
+
+<a asp-controller="Laptop" asp-action="Crear" class="btn btn-primary mx-2 mb-3">Comprar Laptop</a>
+
+<a asp-controller="Laptop" asp-action="Index" class="btn btn-primary mx-2 mb-3">Lista de Laptop</a>
+
+<a asp-controller="Inventario" asp-action="InventarioLaptop" class="btn btn-primary mx-2 mb-3">Inventario de Laptop</a>
+
+<a asp-controller="Inventario" asp-action="InventarioMateriaPrima" class="btn btn-primary mx-2 mb-3">Inventario de Materias P.</a>
 
 @if (ViewBag.Mensaje != null)
 {
