@@ -3,34 +3,161 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Hola Mundo</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-<!--PRUEBA BORRAR LUEGO-->
-<a asp-controller="MateriaPrima" asp-action="Crear" class="btn btn-primary mx-2 mb-3">Crear Materia</a>
 
-<a asp-controller="MateriaPrima" asp-action="Index" class="btn btn-primary mx-2 mb-3">Lista de Materia P.</a>
 
-<a asp-controller="Proveedor" asp-action="Crear" class="btn btn-primary mx-2 mb-3">Crear Proveedor</a>
+<div class="container text-center">
+    <div class="row mb-3">
+        <div class="col-12 col-md-3">
+            <a asp-controller="MateriaPrima" asp-action="Crear" class="text-decoration-none text-dark">
+                <div class="card shadow-sm text-center p-4 hover-effect" style="cursor:pointer; border-radius: 15px;">
+                    <i class="bi bi-plus-circle fs-1 mb-2"></i>
+                    <h5 class="fw-bold">Crear Materia</h5>
+                    <p class="text-muted mb-0 ">
+                       Registrar una nueva materia prima
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-3">
+            <a asp-controller="MateriaPrima" asp-action="Index" class="text-decoration-none text-dark">
+                <div class="card shadow-sm text-center p-4 hover-effect" style="cursor:pointer; border-radius: 15px;">
+                    <i class="bi bi-card-list fs-1 mb-2"></i>
+                    <h5 class="fw-bold">Ver </h5>
+                    <p class="text-muted mb-0 fs-6">
+                       Ver materias primas registradas
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-3">
+            <a asp-controller="Proveedor" asp-action="Crear" class="text-decoration-none text-dark">
+                <div class="card shadow-sm text-center p-4 hover-effect" style="cursor:pointer; border-radius: 15px;">
+                    <i class="bi bi-building-add fs-1 mb-2"></i>
+                    <h5 class="fw-bold">Crear Proveedor</h5>
+                    <p class="text-muted mb-0 fs-6">
+                        Registrar un nuevo Proveedor
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-3">
+            <a asp-controller="Proveedor" asp-action="Index" class="text-decoration-none text-dark">
+                <div class="card shadow-sm text-center p-4 hover-effect" style="cursor:pointer; border-radius: 15px;">
+                    <i class="bi bi-person-lines-fill fs-1 mb-2"></i>
+                    <h5 class="fw-bold">Ver Proveedores</h5>
+                    <p class="text-muted mb-0 fs-6">
+                        Ver todos los proveedores
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container text-center">
+    <div class="row mb-3">
+        <div class="col-12 col-md-3">
+            <a asp-controller="OrdenProduccion" asp-action="Crear" class="text-decoration-none text-dark">
+                <div class="card shadow-sm text-center p-4 hover-effect" style="cursor:pointer; border-radius: 15px;">
 
-<a asp-controller="Proveedor" asp-action="Index" class="btn btn-primary mx-2 mb-3">Lista de Proveedores</a>
+                    <i class="bi bi-wrench fs-1 mb-2"></i>
+                    <h5 class="fw-bold">Producir Laptops</h5>
+                    <p class="text-muted mb-0 fs-6">
+                        Realiza una orden de producción para generar laptops.
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-3">
+            <a asp-controller="OrdenProduccion" asp-action="Index" class="text-decoration-none text-dark">
+                <div class="card shadow-sm text-center p-4 hover-effect" style="cursor:pointer; border-radius: 15px;">
+                    <i class="bi bi-file-post fs-1 mb-2"></i>
+                    <h5 class="fw-bold">Registro de producción</h5>
+                    <p class="text-muted mb-0 fs-6">
+                        Ver todas las ordenes de producción realizadas.
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-3">
+            <a asp-controller="OrdenCompra" asp-action="Crear" class="text-decoration-none text-dark">
+                <div class="card shadow-sm text-center p-4 hover-effect" style="cursor:pointer; border-radius: 15px;">
+                    <i class="bi bi-bag-plus fs-1 mb-2"></i>
+                    <h5 class="fw-bold">Comprar Materia Prima</h5>
+                    <p class="text-muted mb-0 fs-6">
+                        Realizar una orden de compra para materia prima.
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-3">
+            <a asp-controller="OrdenCompra" asp-action="Index" class="text-decoration-none text-dark">
+                <div class="card shadow-sm text-center p-4 hover-effect" style="cursor:pointer; border-radius: 15px;">
 
-<a asp-controller="OrdenProduccion" asp-action="Crear" class="btn btn-primary mx-2 mb-3">Crear Orden Producción</a>
+                    <i class="bi bi-journals fs-1 mb-2"></i>
+                    <h5 class="fw-bold">Registro de Compras</h5>
+                    <p class="text-muted mb-0 fs-6">
+                        Ver todas las ordenes de compra realizadas.
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 
-<a asp-controller="OrdenProduccion" asp-action="Index" class="btn btn-primary mx-2 mb-3">Lista de Orden Producción</a>
+<div class="container text-center">
+    <div class="row mb-3">
+        <div class="col-12 col-md-3">
+            <a asp-controller="Laptop" asp-action="Crear" class="text-decoration-none text-dark">
+                <div class="card shadow-sm text-center p-4 hover-effect" style="cursor:pointer; border-radius: 15px;">
+                    <i class="bi bi-journal-plus fs-1 mb-2"></i>
+                    <h5 class="fw-bold">Crear Receta</h5>
+                    <p class="text-muted mb-0 fs-6">
+                        Crea la receta de la laptop.
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-3">
+            <a asp-controller="Laptop" asp-action="Index" class="text-decoration-none text-dark">
+                <div class="card shadow-sm text-center p-4 hover-effect" style="cursor:pointer; border-radius: 15px;">
+                    <i class="bi bi-journal-check fs-1 mb-2"></i>
+                    <h5 class="fw-bold">Registro de Recetas</h5>
+                    <p class="text-muted mb-0 fs-6">
+                        Ver todas las recetas creadas.
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-3">
+            <a asp-controller="Inventario" asp-action="InventarioLaptop" class="text-decoration-none text-dark">
+                <div class="card shadow-sm text-center p-4 hover-effect" style="cursor:pointer; border-radius: 15px;">
+                    <i class="bi bi-table fs-1 mb-2"></i>
+                    <h5 class="fw-bold">Inventario de Laptops</h5>
+                    <p class="text-muted mb-0 fs-6">
+                        Registro de inventario de laptops.
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-3">
+            <a asp-controller="Inventario" asp-action="InventarioMateriaPrima" class="text-decoration-none text-dark">
+                <div class="card shadow-sm text-center p-4 hover-effect" style="cursor:pointer; border-radius: 15px;">
+                    <i class="bi bi-minecart-loaded fs-1 mb-2"></i>
+                    <h5 class="fw-bold">Inventario de Materiales</h5>
+                    <p class="text-muted mb-0 fs-6">
+                        Ver el inventario de materiales.
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 
-<a asp-controller="OrdenCompra" asp-action="Crear" class="btn btn-primary mx-2 mb-3">Comprar Materia Prima</a>
 
-<a asp-controller="OrdenCompra" asp-action="Index" class="btn btn-primary mx-2 mb-3">Lista Orden Compra Materia P.</a>
-
-<a asp-controller="Laptop" asp-action="Crear" class="btn btn-primary mx-2 mb-3">Comprar Laptop</a>
-
-<a asp-controller="Laptop" asp-action="Index" class="btn btn-primary mx-2 mb-3">Lista de Laptop</a>
-
-<a asp-controller="Inventario" asp-action="InventarioLaptop" class="btn btn-primary mx-2 mb-3">Inventario de Laptop</a>
-
-<a asp-controller="Inventario" asp-action="InventarioMateriaPrima" class="btn btn-primary mx-2 mb-3">Inventario de Materias P.</a>
 
 @if (ViewBag.Mensaje != null)
 {
@@ -38,3 +165,10 @@
         @ViewBag.Mensaje
     </div>
 }
+<style>
+    .hover-effect:hover {
+        background-color: #0d6efd20; /* azul suave */
+        transform: translateY(-3px);
+        transition: 0.2s ease;
+    }
+</style>
